@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дмитро Будяк — Карта психіки</title>
+  <meta name="description" content="Дмитро Будяк — психолог. Карта психіки: персональний візуальний портрет вашої особистості.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Подключение Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ios: {
+              bg: '#FFFFFF',          /* Чисто белый фон */
+              surface: '#F5F5F7',     /* Фирменный эппловский светло-серый для блоков */
+              border: '#D2D2D7',      /* Серый для тонких линий */
+              text: '#1D1D1F',        /* Глубокий черный для текста */
+              gray: '#86868B',        /* Серый для второстепенного текста */
+              black: '#000000',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #FFFFFF; color: #1D1D1F; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    
+    /* Утиліти для FAQ анімації */
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .faq-answer > div { overflow: hidden; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    
+    /* Эффекты для изображений */
+    .img-hover-zoom { transition: transform 0.7s ease; }
+    .group:hover .img-hover-zoom { transform: scale(1.03); }
+  </style>
+</head>
+<body class="font-sans selection:bg-ios-text selection:text-white">
+
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 lg:px-12 bg-white/70 backdrop-blur-xl border-b border-ios-border flex justify-between items-center transition-all duration-300" id="navbar">
+  <div class="font-semibold text-lg tracking-tight text-ios-text">Дмитро Будяк <span class="text-ios-border mx-1">|</span> Психолог</div>
+  <div class="flex items-center gap-6">
+    <div class="hidden md:flex gap-5 items-center">
+      <a href="https://www.instagram.com/dmytro_budiak/" target="_blank" class="text-ios-gray hover:text-ios-text transition-colors">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dmitro_budiak" target="_blank" class="text-ios-gray hover:text-ios-text transition-colors">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </a>
+    </div>
+    <button onclick="openModal()" class="bg-ios-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">Записатись</button>
+  </div>
+</nav>
+
+<section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 px-6 lg:px-12 max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <div class="z-10 order-2 lg:order-1">
+    <div class="inline-block px-3 py-1 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase text-ios-gray bg-ios-surface border border-ios-border">
+      Психолог · Карта психіки
+    </div>
+    <h1 class="text-5xl lg:text-7xl font-bold tracking-tighter text-ios-text mb-6 leading-[1.05]">
+      Після консультації<br>ви підете<br>не з розмовою.<br>
+      <span class="text-ios-gray">З документом.</span>
+    </h1>
+    <p class="text-lg text-ios-gray max-w-md mb-10 leading-relaxed font-medium">
+      Карта психіки — персональний візуальний портрет вашої особистості: сильні сторони, тригери, сценарії, ресурси і конкретні напрями змін.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <button onclick="openModal()" class="bg-ios-black text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-gray-800 transition-all shadow-lg shadow-black/10">Записатись на консультацію</button>
+      <a href="#what" class="px-8 py-4 rounded-full text-sm font-medium bg-ios-surface text-ios-text hover:bg-gray-200 transition-all">Що таке карта психіки</a>
+    </div>
+  </div>
+
+  <div class="relative z-10 order-1 lg:order-2 group">
+    <!-- Зображення 1: Герой -->
+    <div class="relative rounded-[2rem] overflow-hidden aspect-[4/5] bg-ios-surface">
+      <img src="IMG_9692.PNG" alt="Дмитро Будяк" class="w-full h-full object-cover img-hover-zoom" onerror="this.onerror=null; this.src='https://placehold.co/800x1000/F5F5F7/86868B?text=Главное+Фото';">
+    </div>
+    
+    <!-- Статистика в стиле виджетов -->
+    <div class="absolute -bottom-6 lg:-left-12 left-4 right-4 lg:right-auto bg-white/80 backdrop-blur-xl border border-ios-border p-6 rounded-3xl shadow-xl flex gap-6 overflow-x-auto">
+      <div class="flex-shrink-0">
+        <div class="text-3xl font-bold tracking-tight text-ios-text">7+</div>
+        <div class="text-xs text-ios-gray mt-1 font-medium max-w-[120px]">років практики з дорослими</div>
+      </div>
+      <div class="w-px bg-ios-border"></div>
+      <div class="flex-shrink-0">
+        <div class="text-3xl font-bold tracking-tight text-ios-text">12</div>
+        <div class="text-xs text-ios-gray mt-1 font-medium max-w-[120px]">елементів особистості</div>
+      </div>
+      <div class="w-px bg-ios-border"></div>
+      <div class="flex-shrink-0">
+        <div class="text-3xl font-bold tracking-tight text-ios-text">∞</div>
+        <div class="text-xs text-ios-gray mt-1 font-medium max-w-[120px]">разів повернення до карти</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-ios-surface py-6 border-y border-ios-border mt-12 lg:mt-0">
+  <div class="max-w-[1440px] mx-auto px-6 flex flex-wrap justify-center gap-x-12 gap-y-4">
+    <div class="flex items-center gap-2 text-sm text-ios-text font-semibold"><svg class="w-4 h-4 text-ios-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Онлайн і офлайн</div>
+    <div class="flex items-center gap-2 text-sm text-ios-text font-semibold"><svg class="w-4 h-4 text-ios-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Наукові методики</div>
+    <div class="flex items-center gap-2 text-sm text-ios-text font-semibold"><svg class="w-4 h-4 text-ios-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Індивідуальний підхід</div>
+    <div class="flex items-center gap-2 text-sm text-ios-text font-semibold"><svg class="w-4 h-4 text-ios-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Сесія — 1200 грн</div>
+  </div>
+</div>
+
+<section class="py-24 px-6 lg:px-12 max-w-[1200px] mx-auto">
+  <div class="grid lg:grid-cols-12 gap-16 items-start">
+    <div class="lg:col-span-7">
+      <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Проблема</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-8">
+        Ви вже були у психологів.<br>І все одно <span class="text-ios-gray">знову тут.</span>
+      </h2>
+      <div class="space-y-6 text-lg text-ios-gray font-medium leading-relaxed">
+        <p>Після більшості консультацій людина йде з інсайтами. За тиждень вони тьмяніють. За місяць — забуваються. Внутрішня картина розмивається, і людина знову опиняється в точці невизначеності. Ніби нічого й не було.</p>
+        <p>Це не ваша слабкість. Це системна проблема стандартного формату психологічної роботи.</p>
+      </div>
+    </div>
+    <div class="lg:col-span-5 relative group rounded-[2rem] overflow-hidden bg-ios-surface">
+      <!-- Зображення 2: Проблема -->
+      <img src="IMG_9687.PNG" alt="Замислений погляд" class="w-full h-auto object-cover img-hover-zoom" onerror="this.onerror=null; this.src='https://placehold.co/600x800/F5F5F7/86868B?text=Фото+Проблема';">
+    </div>
+  </div>
+
+  <!-- Карточки болей (как виджеты) -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Я не розумію себе»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Відчуття, що ви живете чуже життя або на автопілоті — без розуміння, чого хочете і чому робите те, що робите.</div>
+    </div>
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Одне й те саме по колу»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Однакові стосунки, одні й ті самі конфлікти, одні рішення — ніби ви потрапили у петлю, з якої немає виходу.</div>
+    </div>
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Постійна тривога»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Фонове занепокоєння, яке не відступає. Ви не можете розслабитися навіть коли все гаразд.</div>
+    </div>
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Загубив себе»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Раніше було розуміння, хто ви. Зараз — порожнеча, втома і відчуття, що справжнє життя десь проходить повз.</div>
+    </div>
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Не можу прийняти рішення»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Будь-який важливий вибір паралізує. Ви боїтеся помилитися, догодити іншим, втратити щось важливе.</div>
+    </div>
+    <div class="bg-ios-surface p-8 rounded-3xl transition-transform hover:scale-[1.02]">
+      <div class="font-bold text-lg text-ios-text mb-2">«Вигорання»</div>
+      <div class="text-sm text-ios-gray font-medium leading-relaxed">Немає сил. Немає сенсу. Ви робите все правильно — але всередині порожньо. І незрозуміло, що з цим робити.</div>
+    </div>
+  </div>
+
+  <div class="mt-20 border border-ios-border rounded-3xl p-8 lg:p-12 relative overflow-hidden bg-white shadow-sm">
+    <div class="absolute top-0 left-0 w-2 h-full bg-ios-text"></div>
+    <p class="text-xl lg:text-2xl font-medium leading-snug text-ios-text mb-6">
+      «Коли людина приходить до офтальмолога — вона отримує рецепт. Коли до кардіолога — отримує висновок. Коли приходить до психолога — найчастіше отримує лише розмову.<br><br>
+      <span class="font-bold">Я вважаю, що результат психологічної роботи має залишатися з людиною.</span><br><br>
+      Тому мої клієнти отримують карту психіки.»
+    </p>
+    <div class="text-sm font-semibold text-ios-gray uppercase tracking-wide">— Дмитро Будяк, психолог</div>
+  </div>
+</section>
+
+<section id="what" class="py-24 px-6 lg:px-12 bg-ios-surface border-y border-ios-border">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Карта психіки</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">Візуальний портрет<br><span class="text-ios-gray">вашої особистості.</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="order-2 lg:order-1 space-y-6 text-lg text-ios-text font-medium leading-relaxed">
+        <p class="text-ios-gray">Карта психіки — це не гарна схема і не тест з інтернету. Це професійний аналітичний документ, створений на основі серії консультацій, глибинного інтерв'ю і — за потреби — наукових психодіагностичних методик.</p>
+        <p class="text-ios-gray">Це перший раз, коли ви побачите себе цілком. Не окремі шматочки, які ви помічали в терапії чи книгах — а повну картину. Як усе це пов'язано між собою.</p>
+        <p class="text-ios-gray">Карту можна переглядати через півроку — і помічати, що змінилося. Повертатися в момент нової кризи. Використовувати як навігатор при прийнятті важливих рішень.</p>
+        <div class="bg-white p-6 rounded-2xl border border-ios-border">
+          <p class="font-bold text-ios-text">Карта психіки — це те, що залишається з вами після роботи з психологом.</p>
+        </div>
+        
+        <div class="pt-6">
+          <button onclick="openModal()" class="bg-ios-black text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-gray-800 transition-all">Отримати свою карту психіки</button>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2 relative">
+        <!-- Зображення 3: Експертність -->
+        <div class="rounded-[2rem] overflow-hidden shadow-xl mb-8 group bg-white">
+          <img src="IMG_9691.PNG" alt="Дмитро біля стіни" class="w-full h-auto object-cover img-hover-zoom aspect-square lg:aspect-[4/5] object-top" onerror="this.onerror=null; this.src='https://placehold.co/600x800/FFFFFF/1D1D1F?text=Фото+Експерт';">
+        </div>
+        
+        <div class="bg-white p-8 rounded-3xl border border-ios-border shadow-xl absolute -bottom-12 -left-6 lg:-left-12 right-6 lg:right-auto lg:w-[400px]">
+          <div class="text-xl font-bold mb-4 border-b border-ios-border pb-4 tracking-tight">Що входить у карту</div>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 text-sm font-medium text-ios-text"><div class="w-2 h-2 rounded-full bg-ios-text flex-shrink-0"></div>Сильні сторони особистості</li>
+            <li class="flex items-center gap-3 text-sm font-medium text-ios-text"><div class="w-2 h-2 rounded-full bg-ios-text flex-shrink-0"></div>Приховані ресурси та обмеження</li>
+            <li class="flex items-center gap-3 text-sm font-medium text-ios-text"><div class="w-2 h-2 rounded-full bg-ios-text flex-shrink-0"></div>Емоційні тригери та захисти</li>
+            <li class="flex items-center gap-3 text-sm font-medium text-ios-text"><div class="w-2 h-2 rounded-full bg-ios-text flex-shrink-0"></div>Повторювані сценарії</li>
+            <li class="flex items-center gap-3 text-sm font-medium text-ios-text"><div class="w-2 h-2 rounded-full bg-ios-text flex-shrink-0"></div>Внутрішні конфлікти та зони зростання</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6 lg:px-12 max-w-[1200px] mx-auto pt-36 lg:pt-24">
+  <div class="text-center mb-16">
+    <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Формати роботи</div>
+    <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">Оберіть глибину<br><span class="text-ios-gray">дослідження.</span></h2>
+  </div>
+
+  <div class="grid lg:grid-cols-3 gap-6">
+    <!-- Card 1 -->
+    <div class="bg-ios-surface rounded-[2rem] p-8 flex flex-col transition-transform hover:-translate-y-1">
+      <div class="text-2xl font-bold tracking-tight mb-2">Консультація</div>
+      <div class="text-sm text-ios-gray font-medium mb-6">Перший крок. Розібратися в конкретній ситуації</div>
+      <div class="text-4xl font-bold mb-1 tracking-tight">1 200 <span class="text-lg font-medium text-ios-gray">грн</span></div>
+      <div class="text-xs text-ios-gray font-semibold mb-8 uppercase tracking-wide">одна сесія</div>
+      <ul class="space-y-4 mb-10 flex-grow">
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Розбір вашого запиту</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Первинна діагностика ситуації</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Конкретні рекомендації</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Розуміння наступного кроку</li>
+      </ul>
+      <button onclick="openModal()" class="w-full py-4 rounded-full bg-white border border-ios-border text-ios-text font-semibold text-sm hover:bg-gray-50 transition-colors">Записатись</button>
+    </div>
+
+    <!-- Card 2 (Featured) -->
+    <div class="bg-ios-black text-white rounded-[2rem] p-8 relative flex flex-col shadow-2xl transition-transform hover:-translate-y-1">
+      <div class="absolute -top-3 right-8 bg-white text-ios-black text-[10px] font-bold uppercase tracking-wide py-1 px-3 rounded-full">Популярний</div>
+      <div class="text-2xl font-bold tracking-tight mb-2">Експрес-карта</div>
+      <div class="text-sm text-gray-400 font-medium mb-6">Цілісна картина за короткий строк</div>
+      <div class="text-4xl font-bold mb-1 tracking-tight">1 800 <span class="text-lg font-medium text-gray-400">грн</span></div>
+      <div class="text-xs text-gray-400 font-semibold mb-8 uppercase tracking-wide">за сесію · 5 зустрічей</div>
+      <ul class="space-y-4 mb-10 flex-grow">
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-gray-500">—</span> 5 глибинних сесій</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-gray-500">—</span> Аналіз ключових патернів</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-gray-500">—</span> Персональна карта психіки</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-gray-500">—</span> Конкретні рекомендації</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-gray-500">—</span> Підсумкова сесія розбору карти</li>
+      </ul>
+      <button onclick="openModal()" class="w-full py-4 rounded-full bg-white text-ios-black font-semibold text-sm hover:bg-gray-200 transition-colors">Записатись</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-ios-surface rounded-[2rem] p-8 flex flex-col transition-transform hover:-translate-y-1">
+      <div class="text-2xl font-bold tracking-tight mb-2">Повна карта</div>
+      <div class="text-sm text-ios-gray font-medium mb-6">Глибоке дослідження особистості</div>
+      <div class="text-4xl font-bold mb-1 tracking-tight">2 500 <span class="text-lg font-medium text-ios-gray">грн</span></div>
+      <div class="text-xs text-ios-gray font-semibold mb-8 uppercase tracking-wide">за сесію · 20 зустрічей</div>
+      <ul class="space-y-4 mb-10 flex-grow">
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> 20 сесій глибинної роботи</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Життєві сценарії та переконання</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Стосунки та прив'язаність</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Повна карта особистості</li>
+        <li class="flex items-start gap-3 text-sm font-medium"><span class="text-ios-gray">—</span> Прогноз і напрями розвитку</li>
+      </ul>
+      <button onclick="openModal()" class="w-full py-4 rounded-full bg-white border border-ios-border text-ios-text font-semibold text-sm hover:bg-gray-50 transition-colors">Записатись</button>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6 lg:px-12 border-t border-ios-border">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+      <div>
+        <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Як це працює</div>
+        <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">Від першого контакту<br>до <span class="text-ios-gray">карти на руках.</span></h2>
+        <p class="text-lg text-ios-gray font-medium">Кожен етап продуманий так, щоб крок за кроком складати пазл вашої особистості в єдину зрозумілу систему.</p>
+      </div>
+      <div class="rounded-[2rem] overflow-hidden shadow-md group bg-ios-surface">
+        <!-- Зображення 4: Процес -->
+        <img src="IMG_9680.PNG" alt="Дмитро Будяк" class="w-full h-auto object-cover img-hover-zoom aspect-[16/9] lg:aspect-auto" onerror="this.onerror=null; this.src='https://placehold.co/800x1200/F5F5F7/86868B?text=Фото+Процес';">
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+      <div class="hidden lg:block absolute top-8 left-1/8 right-1/8 w-3/4 h-px bg-ios-border z-0"></div>
+      
+      <div class="relative z-10 text-center bg-white px-2">
+        <div class="w-16 h-16 rounded-full bg-ios-black text-white font-bold text-xl flex items-center justify-center mx-auto mb-6">1</div>
+        <div class="font-bold mb-2 text-lg tracking-tight">Знайомство</div>
+        <div class="text-sm text-ios-gray font-medium">Вступна сесія. Ви розповідаєте, що відбувається. Я ставлю запитання, які ви собі не ставили.</div>
+      </div>
+      <div class="relative z-10 text-center bg-white px-2">
+        <div class="w-16 h-16 rounded-full bg-white border-2 border-ios-border text-ios-text font-bold text-xl flex items-center justify-center mx-auto mb-6">2</div>
+        <div class="font-bold mb-2 text-lg tracking-tight">Дослідження</div>
+        <div class="text-sm text-ios-gray font-medium">Серія глибинних сесій. Ми досліджуємо вашу особистість, історію, стосунки, сценарії та переконання.</div>
+      </div>
+      <div class="relative z-10 text-center bg-white px-2">
+        <div class="w-16 h-16 rounded-full bg-white border-2 border-ios-border text-ios-text font-bold text-xl flex items-center justify-center mx-auto mb-6">3</div>
+        <div class="font-bold mb-2 text-lg tracking-tight">Аналіз</div>
+        <div class="text-sm text-ios-gray font-medium">Я створюю персональну карту психіки на основі наших сесій і діагностичних методик.</div>
+      </div>
+      <div class="relative z-10 text-center bg-white px-2">
+        <div class="w-16 h-16 rounded-full bg-white border-2 border-ios-border text-ios-text font-bold text-xl flex items-center justify-center mx-auto mb-6">4</div>
+        <div class="font-bold mb-2 text-lg tracking-tight">Карта</div>
+        <div class="text-sm text-ios-gray font-medium">Ви отримуєте документ. Розбираємо його разом. Карта залишається з вами назавжди.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6 lg:px-12 max-w-[1000px] mx-auto bg-ios-surface rounded-[3rem] my-12">
+  <div class="text-center mb-16">
+    <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Заперечення</div>
+    <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">Думки, які можуть<br><span class="text-ios-gray">зупиняти.</span></h2>
+  </div>
+
+  <div class="bg-white rounded-[2rem] border border-ios-border shadow-sm divide-y divide-ios-border mb-16">
+    <div class="p-8 lg:p-10 grid md:grid-cols-[1fr_2fr] gap-6">
+      <div class="font-semibold text-lg text-ios-text">«Я можу просто поговорити з психологом»</div>
+      <div class="text-ios-gray font-medium leading-relaxed">Можете. Розмова — це цінно. Але розмова зникає. Інсайти — теж. Карта психіки — це не заміна розмові. Це її <span class="font-bold text-ios-text">матеріальний результат</span>. Документ, який ви не втратите.</div>
+    </div>
+    <div class="p-8 lg:p-10 grid md:grid-cols-[1fr_2fr] gap-6">
+      <div class="font-semibold text-lg text-ios-text">«Це дорого»</div>
+      <div class="text-ios-gray font-medium leading-relaxed">Дорого — це продовжувати жити за сценаріями, які вас руйнують. Дорого — це ще п'ять років у стосунках, які вам не підходять. <span class="font-bold text-ios-text">Карта психіки — це разова інвестиція</span>, яку ви використовуєте роками.</div>
+    </div>
+    <div class="p-8 lg:p-10 grid md:grid-cols-[1fr_2fr] gap-6">
+      <div class="font-semibold text-lg text-ios-text">«Мені страшно дізнатися правду про себе»</div>
+      <div class="text-ios-gray font-medium leading-relaxed">Це нормально. Але страх — не причина уникати ясності. <span class="font-bold text-ios-text">У карті немає вироків</span> — є розуміння. І саме розуміння прибирає страх. Люди, які боялися найбільше, кажуть, що карта принесла їм полегшення.</div>
+    </div>
+  </div>
+
+  <!-- LEAD MAGNET -->
+  <div class="bg-ios-black text-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row items-center shadow-xl relative" id="leadmagBlock">
+    <!-- Зображення 5: Фокус -->
+    <div class="md:w-2/5 h-64 md:h-auto self-stretch relative group">
+      <img src="IMG_9683.PNG" alt="Дмитро крупним планом" class="w-full h-full object-cover img-hover-zoom" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1D1D1F/FFFFFF?text=Фото+Магніт';">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <div class="p-10 lg:p-12 md:w-3/5">
+      <div class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-4">Безкоштовно</div>
+      <h3 class="text-2xl font-bold tracking-tight mb-4">5 запитань, які почнуть вашу карту психіки</h3>
+      <p class="text-gray-300 font-medium mb-8 text-sm">Короткий розбір від Дмитра Будяка — отримайте на пошту. Без спаму.</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input type="email" id="leadEmail" placeholder="Ваш email" class="bg-white/10 border border-white/20 text-white placeholder:text-gray-400 px-5 py-3 rounded-xl outline-none focus:border-white transition-colors flex-grow text-sm font-medium">
+        <button onclick="submitLead()" class="bg-white text-ios-black font-semibold px-6 py-3 rounded-xl hover:bg-gray-200 transition-colors text-sm whitespace-nowrap">Отримати</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-6 lg:px-12 bg-white">
+  <div class="max-w-[800px] mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-xs font-semibold tracking-wide uppercase text-ios-gray mb-4">Запитання</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">Часто <span class="text-ios-gray">запитують.</span></h2>
+    </div>
+
+    <div class="space-y-2">
+      <div class="faq-item border-b border-ios-border">
+        <button class="w-full text-left py-6 flex justify-between items-center gap-4 focus:outline-none" onclick="toggleFaq(this)">
+          <span class="font-bold text-lg">Як виглядає карта психіки фізично?</span>
+          <span class="faq-icon text-ios-gray text-2xl font-light transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer text-ios-gray font-medium text-base leading-relaxed">
+          <div class="pb-6">Це структурований документ — зазвичай кілька сторінок з розділами, схемами та текстовим описом. Кожен елемент вашої особистості описаний і проілюстрований. Карта створюється індивідуально — шаблонів немає.</div>
+        </div>
+      </div>
+      <div class="faq-item border-b border-ios-border">
+        <button class="w-full text-left py-6 flex justify-between items-center gap-4 focus:outline-none" onclick="toggleFaq(this)">
+          <span class="font-bold text-lg">Чи працюєте ви онлайн?</span>
+          <span class="faq-icon text-ios-gray text-2xl font-light transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer text-ios-gray font-medium text-base leading-relaxed">
+          <div class="pb-6">Так. Онлайн і офлайн. Формат обирається на етапі знайомства і не впливає на якість роботи.</div>
+        </div>
+      </div>
+      <div class="faq-item border-b border-ios-border">
+        <button class="w-full text-left py-6 flex justify-between items-center gap-4 focus:outline-none" onclick="toggleFaq(this)">
+          <span class="font-bold text-lg">З якими темами ви працюєте?</span>
+          <span class="faq-icon text-ios-gray text-2xl font-light transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer text-ios-gray font-medium text-base leading-relaxed">
+          <div class="pb-6">Тривога, кризи ідентичності, самооцінка, стосунки, емоційна залежність, повторювані життєві сценарії, пошук себе, вигорання, внутрішня порожнеча, особистісний розвиток. Якщо у вас інший запит — напишіть, розберемося разом.</div>
+        </div>
+      </div>
+      <div class="faq-item border-b border-ios-border">
+        <button class="w-full text-left py-6 flex justify-between items-center gap-4 focus:outline-none" onclick="toggleFaq(this)">
+          <span class="font-bold text-lg">Скільки часу займає створення карти?</span>
+          <span class="faq-icon text-ios-gray text-2xl font-light transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-answer text-ios-gray font-medium text-base leading-relaxed">
+          <div class="pb-6">Експрес-карта: 5 сесій + фінальна сесія розбору. Повна карта: 20 сесій. Частота зустрічей обговорюється індивідуально — зазвичай раз на тиждень або два.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-ios-black text-white py-24 px-6 lg:px-12 text-center relative overflow-hidden">
+  <div class="relative z-10 max-w-[700px] mx-auto">
+    <h2 class="text-5xl lg:text-6xl font-bold tracking-tighter mb-6">Ви заслуговуєте<br><span class="text-gray-400">розуміти себе.</span></h2>
+    <p class="text-lg text-gray-400 font-medium mb-10">Запишіться на першу консультацію. Одна розмова — і ви зрозумієте, де знаходитесь і куди рухатись.</p>
+    <button onclick="openModal()" class="bg-white text-ios-black px-10 py-4 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-gray-200 transition-colors shadow-2xl">Записатись — 1200 грн</button>
+    <div class="text-xs text-gray-500 font-semibold mt-6 tracking-wide uppercase">Відповім протягом дня</div>
+  </div>
+</section>
+
+<footer class="bg-ios-surface py-12 px-6 lg:px-12 border-t border-ios-border">
+  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="text-sm font-medium text-ios-gray">© 2026 Дмитро Будяк | Психолог</div>
+    <div class="flex gap-6 font-medium">
+      <a href="https://www.instagram.com/dmytro_budiak/" target="_blank" class="text-ios-gray hover:text-ios-black transition-colors">Instagram</a>
+      <a href="https://www.facebook.com/share/1EPdAvq2MX/?mibextid=wwXIfr" target="_blank" class="text-ios-gray hover:text-ios-black transition-colors">Facebook</a>
+      <a href="https://www.tiktok.com/@dmitro_budiak" target="_blank" class="text-ios-gray hover:text-ios-black transition-colors">TikTok</a>
+    </div>
+    <div class="text-sm font-medium text-ios-gray">Конфіденційність | Онлайн і офлайн</div>
+  </div>
+</footer>
+
+<div id="modal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center px-4" onclick="closeModalOutside(event)">
+  <div class="bg-white w-full max-w-md rounded-[2rem] p-8 lg:p-10 relative transform scale-95 transition-transform duration-300 shadow-2xl" id="modalInner">
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-ios-gray hover:text-ios-text text-3xl font-light leading-none">&times;</button>
+    <h2 class="text-3xl font-bold tracking-tight mb-2 text-ios-text">Записатись</h2>
+    <p class="text-sm text-ios-gray font-medium mb-8">Заповніть форму — Дмитро відповість протягом дня і запропонує зручний час.</p>
+    
+    <div class="space-y-4 mb-8">
+      <input type="text" id="mName" placeholder="Ваше ім'я" class="w-full bg-ios-surface border border-ios-border px-5 py-4 rounded-xl text-sm font-medium focus:border-ios-text focus:ring-1 focus:ring-ios-text outline-none transition-all">
+      <input type="tel" id="mPhone" placeholder="Телефон або Telegram" class="w-full bg-ios-surface border border-ios-border px-5 py-4 rounded-xl text-sm font-medium focus:border-ios-text focus:ring-1 focus:ring-ios-text outline-none transition-all">
+      <select id="mService" class="w-full bg-ios-surface border border-ios-border px-5 py-4 rounded-xl text-sm font-medium focus:border-ios-text focus:ring-1 focus:ring-ios-text outline-none transition-all appearance-none cursor-pointer">
+        <option value="">Оберіть формат</option>
+        <option>Консультація — 1200 грн</option>
+        <option>Експрес-карта психіки</option>
+        <option>Повна карта психіки</option>
+        <option>Ще не визначився</option>
+      </select>
+      <textarea placeholder="Коротко — що зараз відбувається? (необов'язково)" class="w-full bg-ios-surface border border-ios-border px-5 py-4 rounded-xl text-sm font-medium focus:border-ios-text focus:ring-1 focus:ring-ios-text outline-none transition-all h-24 resize-none"></textarea>
+    </div>
+    
+    <button onclick="submitForm()" class="w-full bg-ios-black text-white py-4 rounded-xl text-sm font-bold uppercase tracking-wide hover:bg-gray-800 transition-colors">Надіслати заявку</button>
+    <p class="text-xs text-ios-gray font-medium text-center mt-4">Дані використовуються лише для зв'язку з вами</p>
+  </div>
+</div>
+
+<script>
+  // Навігація при скролі
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('shadow-sm');
+      nav.classList.replace('py-4', 'py-3');
+    } else {
+      nav.classList.remove('shadow-sm');
+      nav.classList.replace('py-3', 'py-4');
+    }
+  });
+
+  // Логіка FAQ
+  function toggleFaq(button) {
+    const item = button.parentElement;
+    const allItems = document.querySelectorAll('.faq-item');
+    
+    // Закриваємо всі інші
+    allItems.forEach(el => {
+      if(el !== item) el.classList.remove('open');
+    });
+    
+    // Відкриваємо/закриваємо поточний
+    item.classList.toggle('open');
+  }
+
+  // Логіка модального вікна
+  const modal = document.getElementById('modal');
+  const modalInner = document.getElementById('modalInner');
+
+  function openModal() {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modalInner.classList.remove('scale-95');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modalInner.classList.add('scale-95');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === modal) closeModal();
+  }
+
+  // Імітація відправки форми
+  function submitForm() {
+    const name = document.getElementById('mName').value.trim();
+    const phone = document.getElementById('mPhone').value.trim();
+    
+    if (!name || !phone) {
+      alert("Будь ласка, вкажіть ім'я та контакт для зв'язку.");
+      return;
+    }
+    
+    modalInner.innerHTML = `
+      <div class="text-center py-8">
+        <div class="w-16 h-16 bg-ios-surface text-ios-text rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">✓</div>
+        <h2 class="text-3xl font-bold tracking-tight mb-4 text-ios-text">Дякую, ${name}!</h2>
+        <p class="text-ios-gray font-medium mb-8 leading-relaxed">Дмитро зв'яжеться з вами протягом дня.<br>Перевірте ваш Telegram або телефон.</p>
+        <button onclick="closeModal()" class="bg-ios-black text-white px-8 py-4 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors">Закрити вікно</button>
+      </div>
+    `;
+  }
+
+  // Імітація відправки літмагніту
+  function submitLead() {
+    const email = document.getElementById('leadEmail').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Будь ласка, введіть коректний email.');
+      return;
+    }
+    
+    document.getElementById('leadmagBlock').innerHTML = `
+      <div class="p-12 text-center w-full flex flex-col items-center justify-center min-h-[250px] bg-ios-black text-white">
+        <div class="text-white mb-4"><svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+        <h3 class="text-2xl lg:text-3xl font-bold tracking-tight mb-2">Готово — перевірте пошту.</h3>
+        <p class="text-gray-400 font-medium text-sm">Лист із розбором надійде протягом кількох хвилин.</p>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>
